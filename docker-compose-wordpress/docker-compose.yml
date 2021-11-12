@@ -1,0 +1,37 @@
+version: "3"
+
+services:
+  wordpress:
+    build: "./wordpress"
+    environment:
+      VIRTUAL_HOST: "${DOCKER_DEV_DOMAIN:-project.test}"
+      WORDPRESS_DB_HOST: "mysql"
+      WORDPRESS_DB_NAME: "wordpress"
+      WORDPRESS_DB_PASSWORD: ""
+      WORDPRESS_DB_USER: "root"
+      WORDPRESS_DEBUG: "${WORDPRESS_DEBUG:-false}"
+    depends_on:
+      - "mysql"
+    ports:
+      - "80:80"
+    networks:
+      - "front"
+      - "back"
+    volumes:
+      - "./wp:/var/www/html:rw"
+      - "../plugin:/var/www/html/wp-content/plugins/jimsoft-qr-bill:ro"
+  mysql:
+    image: "mariadb:10.2"
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: "wordpress"
+      MYSQL_ROOT_PASSWORD: ""
+    networks:
+      - "back"
+
+networks:
+  front: {}
+  back: {}
+
+volumes:
+  wp: {}
