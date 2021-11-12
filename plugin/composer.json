@@ -4,6 +4,12 @@
     },
     "require": {
         "sprain/swiss-qr-bill": "^3.2",
-        "symfony/intl": "^5.3"
+        "symfony/intl": "^5.3",
+        "mpdf/mpdf": "^8.0"
+    },
+    "config": {
+        "platform": {
+            "php": "7.4.0"
+        }
     }
 }

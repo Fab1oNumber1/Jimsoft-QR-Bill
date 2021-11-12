@@ -1,5 +1,6 @@
 <?php
 
+use Mpdf\Mpdf;
 use Sprain\SwissQrBill\DataGroup\Element\AdditionalInformation;
 use Sprain\SwissQrBill\DataGroup\Element\CreditorInformation;
 use Sprain\SwissQrBill\DataGroup\Element\PaymentAmountInformation;
@@ -72,5 +73,24 @@ class Jimsoft_Qr_Bill_Invoice_Generator {
 			PaymentAmountInformation::create('CHF', 100)
 		);
 
+		$htmlOutput  = new Sprain\SwissQrBill\PaymentPart\Output\HtmlOutput\HtmlOutput($qrBill, 'de');
+
+		$html = '
+		<style>
+		@page {
+			margin: 0;
+		}
+		</style>';
+		$html .= $htmlOutput->getPaymentPart();
+
+
+		echo $html;
+		exit;
+		$mpdf = new Mpdf([
+			'tempDir' => __DIR__ . '/tmp'
+		]);
+		$mpdf->WriteHTML($html);
+		$mpdf->Output();
+		exit;
 	}
 }

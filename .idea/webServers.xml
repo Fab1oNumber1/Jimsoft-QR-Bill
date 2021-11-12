@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="4134ca45-dc6d-4cb4-9ebf-effb20e1251e" name="plugin">
+        <fileTransfer rootFolder="/home/jimbobch/www/wc-qr-preview.jimsoft.ch" accessType="SFTP" host="jimbob.ch" port="22" sshConfigId="afe119a1-a8eb-4bcb-9d98-6f4887f3bfee" sshConfig="jimbobch@jimbob.ch:22 agent" authAgent="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

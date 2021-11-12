@@ -15,3 +15,6 @@ RUN apt-get update -y \
   && docker-php-ext-enable xdebug
 
 COPY docker-php-ext-xdebug.ini /usr/local/etc/php/conf.d
+
+RUN chown -R 777 /var/www/html/wp-content/
+
