@@ -3,6 +3,7 @@
         "symfony/var-dumper": "^5.3"
     },
     "require": {
-        "sprain/swiss-qr-bill": "^3.2"
+        "sprain/swiss-qr-bill": "^3.2",
+        "symfony/intl": "^5.3"
     }
 }

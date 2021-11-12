@@ -8,6 +8,9 @@ RUN apt-get update -y \
   && apt-get clean -y \
   && docker-php-ext-install soap  \
   && docker-php-ext-enable soap \
+  && docker-php-ext-configure intl \
+  && docker-php-ext-install intl \
+  && docker-php-ext-enable intl \
   && pecl install xdebug \
   && docker-php-ext-enable xdebug
 
