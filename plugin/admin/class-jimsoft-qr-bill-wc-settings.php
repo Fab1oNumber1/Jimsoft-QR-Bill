@@ -66,7 +66,7 @@ if ( ! class_exists( 'Jimsoft_Qr_Bill_WC_Settings' ) ) {
         public function get_settings() {
 
             global $current_section;
-            $prefix = 'jimsoft-qr-bill_';
+            $prefix = Jimsoft_Qr_Bill::PREFIX;
             $settings = array();
 
             switch ($current_section) {

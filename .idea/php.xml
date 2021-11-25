@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/plugin/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/plugin/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/plugin/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/plugin/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/plugin/vendor/symfony/options-resolver" />
+      <path value="$PROJECT_DIR$/plugin/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/plugin/vendor/symfony/property-access" />
+      <path value="$PROJECT_DIR$/plugin/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/plugin/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/plugin/vendor/symfony/property-info" />
+      <path value="$PROJECT_DIR$/plugin/vendor/myclabs/php-enum" />
+      <path value="$PROJECT_DIR$/plugin/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/plugin/vendor/symfony/polyfill-intl-icu" />
+      <path value="$PROJECT_DIR$/plugin/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/plugin/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/plugin/vendor/symfony/validator" />
+      <path value="$PROJECT_DIR$/plugin/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/plugin/vendor/symfony/intl" />
+      <path value="$PROJECT_DIR$/plugin/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/plugin/vendor/mpdf/mpdf" />
+      <path value="$PROJECT_DIR$/plugin/vendor/bacon/bacon-qr-code" />
+      <path value="$PROJECT_DIR$/plugin/vendor/kmukku/php-iso11649" />
+      <path value="$PROJECT_DIR$/plugin/vendor/sprain/swiss-qr-bill" />
+      <path value="$PROJECT_DIR$/plugin/vendor/dasprid/enum" />
+      <path value="$PROJECT_DIR$/plugin/vendor/endroid/qr-code" />
+      <path value="$PROJECT_DIR$/plugin/vendor/tecnickcom/tcpdf" />
+      <path value="$PROJECT_DIR$/plugin/vendor/composer" />
+      <path value="$PROJECT_DIR$/plugin/vendor/khanamiryan/qrcode-detector-decoder" />
+      <path value="$PROJECT_DIR$/plugin/vendor/setasign/fpdi" />
+      <path value="$PROJECT_DIR$/plugin/vendor/paragonie/random_compat" />
+    </include_path>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.2">
+    <option name="suggestChangeDefaultLanguageLevel" value="false" />
+  </component>
+</project>

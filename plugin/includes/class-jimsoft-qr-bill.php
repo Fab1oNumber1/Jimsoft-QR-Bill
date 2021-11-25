@@ -29,13 +29,14 @@
  */
 class Jimsoft_Qr_Bill {
 
+	const PREFIX = 'jimsoft-qr-bill_';
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
 	 * the plugin.
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Jimsoft_Qr_Bill_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Jimsoft_Qr_Bill_Loader $loader Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -45,7 +46,7 @@ class Jimsoft_Qr_Bill {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Jimsoft_Qr_Bill_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Jimsoft_Qr_Bill_Loader $loader Maintains and registers all hooks for the plugin.
 	 */
 	public $invoice_generator;
 
@@ -54,7 +55,7 @@ class Jimsoft_Qr_Bill {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
+	 * @var      string $plugin_name The string used to uniquely identify this plugin.
 	 */
 	protected $plugin_name;
 
@@ -63,7 +64,7 @@ class Jimsoft_Qr_Bill {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      string    $version    The current version of the plugin.
+	 * @var      string $version The current version of the plugin.
 	 */
 	protected $version;
 
@@ -168,12 +169,31 @@ class Jimsoft_Qr_Bill {
 
 		$plugin_admin = new Jimsoft_Qr_Bill_Admin( $this->get_plugin_name(), $this->get_version() );
 
+
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
-        $this->loader->add_filter( 'woocommerce_get_settings_pages', $plugin_admin, 'jimsoft_qr_add_settings' );
+		$this->loader->add_filter( 'woocommerce_get_settings_pages', $plugin_admin, 'woocommerce_add_settings' );
+		$this->loader->add_filter( 'woocommerce_order_actions', $plugin_admin, 'add_order_meta_box_action_download_invoice' );
 
-    }
+		$this->loader->add_action( 'woocommerce_order_action_' . Jimsoft_Qr_Bill::PREFIX . 'download_pdf', $plugin_admin, 'process_order_meta_box_action_download_invoice' );
+
+		$this->loader->add_filter('manage_edit-shop_order_columns', $plugin_admin, 'shop_order_columns_add_download_invoice');
+		$this->loader->add_action('manage_shop_order_posts_custom_column', $plugin_admin, 'manage_shop_order_posts_custom_column_download_invoice_content', 10, 2);
+
+
+		add_action( 'template_redirect', function () {
+			if ( isset( $_REQUEST['jimsoft_order_id'] ) ) {
+				$id = $_REQUEST['jimsoft_order_id'];
+
+				$generator = new Jimsoft_Qr_Bill_Invoice_Generator();
+
+				$generator->generate( $id );
+				exit;
+			}
+		} );
+
+	}
 
 	/**
 	 * Register all of the hooks related to the public-facing functionality
@@ -204,8 +224,8 @@ class Jimsoft_Qr_Bill {
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
-	 * @since     1.0.0
 	 * @return    string    The name of the plugin.
+	 * @since     1.0.0
 	 */
 	public function get_plugin_name() {
 		return $this->plugin_name;
@@ -214,8 +234,8 @@ class Jimsoft_Qr_Bill {
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @since     1.0.0
 	 * @return    Jimsoft_Qr_Bill_Loader    Orchestrates the hooks of the plugin.
+	 * @since     1.0.0
 	 */
 	public function get_loader() {
 		return $this->loader;
@@ -224,8 +244,8 @@ class Jimsoft_Qr_Bill {
 	/**
 	 * Retrieve the version number of the plugin.
 	 *
-	 * @since     1.0.0
 	 * @return    string    The version number of the plugin.
+	 * @since     1.0.0
 	 */
 	public function get_version() {
 		return $this->version;

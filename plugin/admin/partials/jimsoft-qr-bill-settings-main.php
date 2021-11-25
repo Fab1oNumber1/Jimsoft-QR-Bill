@@ -51,48 +51,130 @@ $settings = array(
 		'id'   => $prefix . 'banking_config_settings'
 	),
 	array(
-		'name' => __( 'Rechnungssteller' ),
-		'type' => 'title',
-		'id'   => $prefix . 'creditor_config_settings',
+		'name'  => __( 'Rechnungssteller' ),
+		'type'  => 'title',
+		'id'    => $prefix . 'creditor_config_settings',
 		'value' => 'test'
 	),
 	array(
-		'id'       => $prefix . 'creditor_company',
-		'name'     => __( 'Firma', 'jimsoft-qr-bill' ),
-		'type'     => 'text',
+		'id'   => $prefix . 'creditor_company',
+		'name' => __( 'Firma', 'jimsoft-qr-bill' ),
+		'type' => 'text',
 	),
 	array(
-		'id'       => $prefix . 'creditor_salutation',
-		'name'     => __( 'Anrede', 'jimsoft-qr-bill' ),
-		'type'     => 'text',
+		'id'   => $prefix . 'creditor_salutation',
+		'name' => __( 'Anrede', 'jimsoft-qr-bill' ),
+		'type' => 'text',
 	),
 	array(
-		'id'       => $prefix . 'creditor_first_name',
-		'name'     => __( 'Vorname', 'jimsoft-qr-bill' ),
-		'type'     => 'text',
+		'id'   => $prefix . 'creditor_first_name',
+		'name' => __( 'Vorname', 'jimsoft-qr-bill' ),
+		'type' => 'text',
 	),
 	array(
-		'id'       => $prefix . 'creditor_last_name',
-		'name'     => __( 'Nachname', 'jimsoft-qr-bill' ),
-		'type'     => 'text',
+		'id'   => $prefix . 'creditor_last_name',
+		'name' => __( 'Nachname', 'jimsoft-qr-bill' ),
+		'type' => 'text',
 	),
 	array(
-		'id'       => $prefix . 'creditor_street',
-		'name'     => __( 'Strasse', 'jimsoft-qr-bill' ),
-		'type'     => 'text',
+		'id'   => $prefix . 'creditor_street',
+		'name' => __( 'Strasse', 'jimsoft-qr-bill' ),
+		'type' => 'text',
 	),
 	array(
-		'id'       => $prefix . 'creditor_zip',
-		'name'     => __( 'PLZ', 'jimsoft-qr-bill' ),
-		'type'     => 'text',
+		'id'   => $prefix . 'creditor_zip',
+		'name' => __( 'PLZ', 'jimsoft-qr-bill' ),
+		'type' => 'text',
 	),
 	array(
-		'id'       => $prefix . 'creditor_city',
-		'name'     => __( 'Stadt', 'jimsoft-qr-bill' ),
-		'type'     => 'text',
+		'id'   => $prefix . 'creditor_city',
+		'name' => __( 'Stadt', 'jimsoft-qr-bill' ),
+		'type' => 'text',
 	),
 	array(
 		'type' => 'sectionend',
 		'id'   => $prefix . 'creditor_config_settings'
 	),
+
+	array(
+		'name'  => __( 'PDF-Rechnung Konfiguration', 'jimsoft-qr-bill' ),
+		'type'  => 'title',
+		'id'    => $prefix . 'pdf_config_settings',
+		'value' => ''
+	),
+	array(
+		'id'       => $prefix . 'pdf_order_details',
+		'name'     => __( 'Bestellpositionen anzeigen', 'jimsoft-qr-bill' ),
+		'type'     => 'checkbox'
+	),
+	array(
+		'id'          => $prefix . 'pdf_order_details_title',
+		'name'        => __( 'Bestellpositionen Titel', 'jimsoft-qr-bill' ),
+		'type'        => 'text',
+		'desc_tip'    => 'Leer lassen um keinen Titel anzuzeigen',
+		'placeholder' => 'Bestelldetails'
+	),
+	array(
+		'id'       => $prefix . 'pdf_color_primary',
+		'name'     => __( 'Farbe Primär', 'jimsoft-qr-bill' ),
+		'type'     => 'color',
+		'desc_tip' => 'Primäre Farbe für die Rechnung',
+	),
+	array(
+		'id'       => $prefix . 'pdf_color_table_odd',
+		'name'     => __( 'Farbe Tabellenzeile ungerade', 'jimsoft-qr-bill' ),
+		'type'     => 'color'
+	),
+	array(
+		'id'       => $prefix . 'pdf_color_table_even',
+		'name'     => __( 'Farbe Tabellenzeile gerade', 'jimsoft-qr-bill' ),
+		'type'     => 'color'
+	),
+	array(
+		'id'          => $prefix . 'pdf_logo',
+		'name'        => __( 'Rechnung Logo anzeigen', 'jimsoft-qr-bill' ),
+		'type'        => 'checkbox'
+	),
+	array(
+		'id'          => $prefix . 'pdf_logo_url',
+		'name'        => __( 'Rechnung Logo (URL)', 'jimsoft-qr-bill' ),
+		'type'        => 'text'
+	),
+	array(
+		'id'          => $prefix . 'pdf_logo_w',
+		'name'        => __( 'Rechnung Logo Breite', 'jimsoft-qr-bill' ),
+		'type'        => 'number'
+	),
+	array(
+		'id'          => $prefix . 'pdf_logo_h',
+		'name'        => __( 'Rechnung Logo Höhe', 'jimsoft-qr-bill' ),
+		'type'        => 'number'
+	),
+
+
+	array(
+		'id'          => $prefix . 'pdf_address',
+		'name'        => __( 'Debitor Adresse anzeigen', 'jimsoft-qr-bill' ),
+		'type'        => 'checkbox'
+	),
+	array(
+		'id'          => $prefix . 'pdf_address_x',
+		'name'        => __( 'Adresse Position X', 'jimsoft-qr-bill' ),
+		'type'        => 'number',
+		'desc_tip'    => 'Millimeter von dem linken Seitenrand',
+		'placeholder'    => 'Millimeter von dem linken Seitenrand',
+	),
+	array(
+		'id'          => $prefix . 'pdf_address_y',
+		'name'        => __( 'Adresse Position Y', 'jimsoft-qr-bill' ),
+		'type'        => 'number',
+		'desc_tip'    => 'Millimeter von dem oberem Seitenrand',
+		'placeholder'    => 'Millimeter von dem oberem Seitenrand',
+	),
+
+	array(
+		'type' => 'sectionend',
+		'id'   => $prefix . 'pdf_config_settings'
+	),
+
 );
