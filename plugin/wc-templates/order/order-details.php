@@ -53,7 +53,14 @@ if ( $show_downloads ) {
     <h2 class="woocommerce-order-details__title"><?= $value; ?></h2>
 <?php endif; ?>
 
-    <table class="woocommerce-table woocommerce-table--order-details shop_table order_details" cellpadding="5">
+
+<?php if ( $value = $this->get_option( 'pdf_order_details_text' ) ): ?>
+	<?= nl2br($value); ?>
+    <br/>
+    <br/>
+<?php endif; ?>
+
+    <table class="woocommerce-table woocommerce-table--order-details shop_table order_details" cellpadding="<?= $this->get_option('pdf_table_cellpadding'); ?>">
 
         <thead>
         <tr>

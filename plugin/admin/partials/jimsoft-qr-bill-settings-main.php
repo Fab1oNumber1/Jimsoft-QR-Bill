@@ -28,24 +28,6 @@ $settings = array(
 		'desc_tip' => __( '', 'jimsoft-qr-bill' )
 	),
 	array(
-		'id'       => $prefix . 'pc_account_number',
-		'name'     => __( 'PC Kontonummer', 'jimsoft-qr-bill' ),
-		'type'     => 'text',
-		'desc_tip' => __( '', 'jimsoft-qr-bill' )
-	),
-	array(
-		'id'       => $prefix . 'clearing_no',
-		'name'     => __( 'Clearing No', 'jimsoft-qr-bill' ),
-		'type'     => 'text',
-		'desc_tip' => __( '', 'jimsoft-qr-bill' )
-	),
-	array(
-		'id'       => $prefix . 'esr_no',
-		'name'     => __( 'ESR Teilnehmer No', 'jimsoft-qr-bill' ),
-		'type'     => 'text',
-		'desc_tip' => __( '', 'jimsoft-qr-bill' )
-	),
-	array(
 		'type' => 'sectionend',
 		'desc' => '',
 		'id'   => $prefix . 'banking_config_settings'
@@ -103,16 +85,35 @@ $settings = array(
 		'value' => ''
 	),
 	array(
+		'id'       => $prefix . 'pdf_font_size',
+		'name'     => __( 'Schriftgrösse', 'jimsoft-qr-bill' ),
+		'type'     => 'number',
+		'placeholder' => '10'
+	),
+	array(
+		'id'          => $prefix . 'pdf_order_details_title',
+		'name'        => __( 'Bestelldetails Titel', 'jimsoft-qr-bill' ),
+		'type'        => 'text',
+		'desc_tip'    => 'Leer lassen um keinen Titel anzuzeigen',
+		'placeholder' => 'Bestellung [order_number]',
+		'value' => get_option($prefix . 'pdf_order_details_title') ? get_option($prefix . 'pdf_order_details_title') : 'Bestellung #[order_number]'
+	),
+	array(
+		'id'          => $prefix . 'pdf_order_details_text',
+		'name'        => __( 'Bestelldetails Text', 'jimsoft-qr-bill' ),
+		'type'        => 'textarea',
+		'desc_tip'    => 'Leer lassen um keinen Text anzuzeigen',
+		'cols' => 5
+	),
+	array(
 		'id'       => $prefix . 'pdf_order_details',
 		'name'     => __( 'Bestellpositionen anzeigen', 'jimsoft-qr-bill' ),
 		'type'     => 'checkbox'
 	),
 	array(
-		'id'          => $prefix . 'pdf_order_details_title',
-		'name'        => __( 'Bestellpositionen Titel', 'jimsoft-qr-bill' ),
-		'type'        => 'text',
-		'desc_tip'    => 'Leer lassen um keinen Titel anzuzeigen',
-		'placeholder' => 'Bestelldetails'
+		'id'       => $prefix . 'pdf_table_cellpadding',
+		'name'     => __( 'Tabellenzellen Padding', 'jimsoft-qr-bill' ),
+		'type'     => 'number'
 	),
 	array(
 		'id'       => $prefix . 'pdf_color_primary',
@@ -132,22 +133,32 @@ $settings = array(
 	),
 	array(
 		'id'          => $prefix . 'pdf_logo',
-		'name'        => __( 'Rechnung Logo anzeigen', 'jimsoft-qr-bill' ),
+		'name'        => __( 'Logo anzeigen', 'jimsoft-qr-bill' ),
 		'type'        => 'checkbox'
 	),
 	array(
 		'id'          => $prefix . 'pdf_logo_url',
-		'name'        => __( 'Rechnung Logo (URL)', 'jimsoft-qr-bill' ),
+		'name'        => __( 'Logo (URL)', 'jimsoft-qr-bill' ),
 		'type'        => 'text'
 	),
 	array(
+		'id'          => $prefix . 'pdf_logo_x',
+		'name'        => __( 'Logo Position X', 'jimsoft-qr-bill' ),
+		'type'        => 'number'
+	),
+	array(
+		'id'          => $prefix . 'pdf_logo_y',
+		'name'        => __( 'Logo Position Y', 'jimsoft-qr-bill' ),
+		'type'        => 'number'
+	),
+	array(
 		'id'          => $prefix . 'pdf_logo_w',
-		'name'        => __( 'Rechnung Logo Breite', 'jimsoft-qr-bill' ),
+		'name'        => __( 'Logo Breite', 'jimsoft-qr-bill' ),
 		'type'        => 'number'
 	),
 	array(
 		'id'          => $prefix . 'pdf_logo_h',
-		'name'        => __( 'Rechnung Logo Höhe', 'jimsoft-qr-bill' ),
+		'name'        => __( 'Logo Höhe', 'jimsoft-qr-bill' ),
 		'type'        => 'number'
 	),
 
@@ -170,6 +181,52 @@ $settings = array(
 		'type'        => 'number',
 		'desc_tip'    => 'Millimeter von dem oberem Seitenrand',
 		'placeholder'    => 'Millimeter von dem oberem Seitenrand',
+	),
+
+	array(
+		'id'          => $prefix . 'pdf_creditor',
+		'name'        => __( 'Kreditor Textfeld', 'jimsoft-qr-bill' ),
+		'type'        => 'textarea'
+	),
+	array(
+		'id'          => $prefix . 'pdf_creditor_x',
+		'name'        => __( 'Kreditor Position X', 'jimsoft-qr-bill' ),
+		'type'        => 'number',
+		'desc_tip'    => 'Millimeter von dem linken Seitenrand',
+		'placeholder'    => 'Millimeter von dem linken Seitenrand',
+	),
+	array(
+		'id'          => $prefix . 'pdf_creditor_y',
+		'name'        => __( 'Kreditor Position Y', 'jimsoft-qr-bill' ),
+		'type'        => 'number',
+		'desc_tip'    => 'Millimeter von dem oberem Seitenrand',
+		'placeholder'    => 'Millimeter von dem oberem Seitenrand',
+	),
+	array(
+		'id'          => $prefix . 'pdf_date',
+		'name'        => __( 'Datum anzeigen', 'jimsoft-qr-bill' ),
+		'type'        => 'checkbox'
+	),
+	array(
+		'id'          => $prefix . 'pdf_date_city',
+		'name'        => __( 'Datum Ort', 'jimsoft-qr-bill' ),
+		'type'        => 'text',
+	),
+	array(
+		'id'          => $prefix . 'pdf_date_format',
+		'name'        => __( 'Datum Format', 'jimsoft-qr-bill' ),
+		'type'        => 'text',
+		'value'        => get_option($prefix . 'pdf_date_format') ? get_option($prefix . 'pdf_date_format') : 'd.m.Y',
+	),
+	array(
+		'id'          => $prefix . 'pdf_date_x',
+		'name'        => __( 'Datum Position X', 'jimsoft-qr-bill' ),
+		'type'        => 'number',
+	),
+	array(
+		'id'          => $prefix . 'pdf_date_y',
+		'name'        => __( 'Datum Position Y', 'jimsoft-qr-bill' ),
+		'type'        => 'number',
 	),
 
 	array(

@@ -42,15 +42,6 @@ class Jimsoft_Qr_Bill {
 
 
 	/**
-	 * The Invoice generator is responsible for generating PDF Invoices from Orders
-	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      Jimsoft_Qr_Bill_Loader $loader Maintains and registers all hooks for the plugin.
-	 */
-	public $invoice_generator;
-
-	/**
 	 * The unique identifier of this plugin.
 	 *
 	 * @since    1.0.0
@@ -137,7 +128,6 @@ class Jimsoft_Qr_Bill {
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-jimsoft-qr-bill-invoice-generator.php';
 
-		$this->invoice_generator = new Jimsoft_Qr_Bill_Invoice_Generator();
 
 	}
 
@@ -186,9 +176,9 @@ class Jimsoft_Qr_Bill {
 			if ( isset( $_REQUEST['jimsoft_order_id'] ) ) {
 				$id = $_REQUEST['jimsoft_order_id'];
 
-				$generator = new Jimsoft_Qr_Bill_Invoice_Generator();
+				$generator = new Jimsoft_Qr_Bill_Invoice_Generator($id);
 
-				$generator->generate( $id );
+				$generator->generate( );
 				exit;
 			}
 		} );

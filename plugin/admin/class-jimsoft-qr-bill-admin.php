@@ -122,9 +122,9 @@ class Jimsoft_Qr_Bill_Admin {
 	public function process_order_meta_box_action_download_invoice( $order ) {
 
 
-		$generator = new Jimsoft_Qr_Bill_Invoice_Generator();
+		$generator = new Jimsoft_Qr_Bill_Invoice_Generator($order->get_id());
 
-		$generator->generate( $order->get_id() );
+		$generator->generate();
 	}
 
 	public function shop_order_columns_add_download_invoice( $columns ) {
