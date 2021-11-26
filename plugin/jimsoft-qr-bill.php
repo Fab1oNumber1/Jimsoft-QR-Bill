@@ -13,7 +13,7 @@
  * @package           Jimsoft_Qr_Bill
  *
  * @wordpress-plugin
- * Plugin Name:       JimSoft QR Bill
+ * Plugin Name:       JimSoft QR Invoice for WooCommerce (Swiss)
  * Plugin URI:        https://jimsoft.ch
  * Description:       With this plugin you can generate a swiss QR invoice for WooCommerce orders.
  * Version:           1.0.0

@@ -14,8 +14,8 @@ msgstr ""
 "X-Generator: WP-CLI 2.5.0\n"
 
 #. Plugin Name of the plugin
-msgid "JimSoft QR Bill"
-msgstr ""
+msgid "JimSoft QR Invoice for WooCommerce (Swiss)"
+msgstr "JimSoft QR-Rechnung für WooCommerce (Schweiz)"
 
 #. Plugin URI of the plugin
 #. Author URI of the plugin
