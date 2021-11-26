@@ -1,5 +1,5 @@
 === JimSoft QR Invoice for WooCommerce (Swiss) ===
-Contributors: (this should be a list of wordpress.org userid's)
+Contributors: jimsoft
 Donate link: https://jimsoft.ch
 Tags: woocommerce, invoice, qr
 Requires at least: 4.7
@@ -24,6 +24,7 @@ Wir bieten dir eine einfache, benutzerfreundliche WooCommerce-Erweiterung, mit d
 * Bestellpositionen & Total: Optional kannst du die Ausgabe von diversen weiteren Informationen auf der Rechnung ausgeben, dazu gehören unter anderem Bestellpositionen, aktuelles Datum, Informationen zum Creditor (z.B. MWST-Nummer) etc.
 * Rechnungen sind direkt Druckbereit: Die Rechnungen sind nach Eingabe der IBAN bereits so konfiguriert, dass diese direkt Druckbereit sind.
 * Kompatibel für Fensterbriefe: Wenn du die Rechnungen per Post versendest oder dem Paket beilegst, kannst du die Adresse des Kunden frei positionieren, so dass diese direkt in das Adressenfenster passt.
+* Verfügbar in Englisch & Deutsch
 
 == Frequently Asked Questions ==
 
@@ -42,3 +43,18 @@ Ja, wie mit roten und orangen Einzahlungsscheinen, kann auch die QR-Rechnung (Za
 = Können im PDF zusätzliche Informationen wie z.B. MWST-Nummer, alternative Bezahlmethoden etc. eingefügt werden?
 
 Ja, durch freie Textfelder können zusätzliche Informationen einfach im PDF direkt in den Einstellungen eingefügt werden.
+
+== Screenshots ==
+
+1. Einstellungen 1: Die Debitorenangaben für die Rechnung
+2. Einstellungen 2: Textgrösse, Farben, Logo (Grösse & Positionierung)
+3. Einstellungen 3: Debitor, Kreditor und Datum/Ort konfiguration/positionierung
+4. Vorschau einer PDF-Rechnung
+
+== Upgrade Notice ==
+= 1.0 =
+First release
+
+== Changelog ==
+= 1.0 =
+* First release.

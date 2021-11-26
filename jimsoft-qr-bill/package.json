@@ -1,0 +1,6 @@
+{
+  "name": "jimsoft-qr-bill",
+  "scripts": {
+    "generate_po": "msgfmt -o languages/jimsoft-qr-bill-de_DE.mo  languages/jimsoft-qr-bill-de_DE.po"
+  }
+}
