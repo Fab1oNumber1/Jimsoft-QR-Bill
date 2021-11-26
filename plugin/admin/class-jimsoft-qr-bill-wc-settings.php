@@ -51,7 +51,7 @@ if ( ! class_exists( 'Jimsoft_Qr_Bill_WC_Settings' ) ) {
          */
         public function get_sections() {
             $sections = array(
-                '' => __( 'Settings' )
+                '' => __( 'Settings', Jimsoft_Qr_Bill::SLUG )
             );
 
             return apply_filters( 'woocommerce_get_sections_' . $this->id, $sections );

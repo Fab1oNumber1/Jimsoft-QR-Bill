@@ -25,7 +25,7 @@ $settings = [
 		'id'       => $prefix . 'customer_identification_number',
 		'name'     => __( 'Customer Identification Number', Jimsoft_Qr_Bill::SLUG ),
 		'type'     => 'text',
-		'desc_tip' => __( '', Jimsoft_Qr_Bill::SLUG )
+		'desc_tip' => __( 'The customer Identification number acts as this unique number that helps banks identify which customer is being referred to with regards to any query or service request. Every bank has its way of creating Customer ID numbers.', Jimsoft_Qr_Bill::SLUG )
 	],
 	[
 		'id'       => $prefix . 'invoice_additional_information',
@@ -84,7 +84,7 @@ $settings = [
 	],
 
 	[
-		'name'  => __( 'QR Bill Configuration', Jimsoft_Qr_Bill::SLUG ),
+		'name'  => __( 'PDF Configuration', Jimsoft_Qr_Bill::SLUG ),
 		'type'  => 'title',
 		'id'    => $prefix . 'pdf_config_settings',
 		'value' => ''
