@@ -217,7 +217,14 @@ class Jimsoft_Qr_Bill_Invoice_Generator {
 			$html_order = ob_get_clean();
 			$tcPdf->writeHTML( $html_order );
 		}
-		$output = new TcPdfOutput( $qrBill, 'en', $tcPdf );
+
+		$locale = 'en';
+
+		if(get_bloginfo('language')) {
+		    $locale = explode('-', get_bloginfo('language'))[0];
+		}
+
+		$output = new TcPdfOutput( $qrBill, $locale, $tcPdf );
 		$output
 			->setPrintable( false )
 			->getPaymentPart();
