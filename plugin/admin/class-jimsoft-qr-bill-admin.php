@@ -111,7 +111,7 @@ class Jimsoft_Qr_Bill_Admin {
 	public function add_order_meta_box_action_download_invoice( $actions ) {
 		global $theorder;
 
-		$actions[ Jimsoft_Qr_Bill::PREFIX . 'download_pdf' ] = __( 'QR-Rechnung herunterladen', Jimsoft_Qr_Bill::PREFIX );
+		$actions[ Jimsoft_Qr_Bill::PREFIX . 'download_pdf' ] = __( 'QR invoice download', Jimsoft_Qr_Bill::PREFIX );
 
 		return $actions;
 	}
@@ -128,7 +128,7 @@ class Jimsoft_Qr_Bill_Admin {
 	}
 
 	public function shop_order_columns_add_download_invoice( $columns ) {
-		$columns[ Jimsoft_Qr_Bill::PREFIX . 'download' ] = __( 'QR-Rechnung', 'woocommerce' );
+		$columns[ Jimsoft_Qr_Bill::PREFIX . 'download' ] = __( 'QR Invoice', 'woocommerce' );
 
 		return $columns;
 	}

@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       JimSoft QR Bill
  * Plugin URI:        https://jimsoft.ch
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       With this plugin you can generate a swiss QR invoice for WooCommerce orders.
  * Version:           1.0.0
  * Author:            JimSoft
  * Author URI:        https://jimsoft.ch
@@ -39,6 +39,28 @@ require __DIR__ . '/vendor/autoload.php';
  * Rename this for your plugin and update it as you release new versions.
  */
 define( 'JIMSOFT_QR_BILL_VERSION', '1.0.0' );
+
+
+/**
+ * Add plugin action links.
+ *
+ * Add a link to the settings page on the plugins.php page.
+ *
+ * @since 1.0.0
+ *
+ * @param  array  $links List of existing plugin action links.
+ * @return array         List of modified plugin action links.
+ */
+function jimsoft_qr_bill_plugin_action_links_add_settings_link( $links ) {
+
+	$links = array_merge( array(
+		'<a href="' . esc_url( admin_url( '/admin.php?page=wc-settings&tab=jimsoft-qr-bill' ) ) . '">' . __( 'Settings', Jimsoft_Qr_Bill::SLUG ) . '</a>'
+	), $links );
+
+	return $links;
+
+}
+add_action( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'jimsoft_qr_bill_plugin_action_links_add_settings_link' );
 
 /**
  * The code that runs during plugin activation.

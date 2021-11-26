@@ -32,8 +32,8 @@ if ( ! class_exists( 'Jimsoft_Qr_Bill_WC_Settings' ) ) {
 
 
 
-            $this->id    = 'jimsoft-qr-bill';
-            $this->label = __( 'QR Rechnung' );
+            $this->id    = Jimsoft_Qr_Bill::SLUG;
+            $this->label = __( 'QR Bill', Jimsoft_Qr_Bill::PREFIX );
 
             // Define all hooks instead of inheriting from parent
             add_filter( 'woocommerce_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
@@ -51,7 +51,7 @@ if ( ! class_exists( 'Jimsoft_Qr_Bill_WC_Settings' ) ) {
          */
         public function get_sections() {
             $sections = array(
-                '' => __( 'Einstellungen' )
+                '' => __( 'Settings' )
             );
 
             return apply_filters( 'woocommerce_get_sections_' . $this->id, $sections );

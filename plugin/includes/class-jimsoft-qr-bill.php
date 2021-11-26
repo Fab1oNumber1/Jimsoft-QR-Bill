@@ -29,6 +29,7 @@
  */
 class Jimsoft_Qr_Bill {
 
+	const SLUG = 'jimsoft-qr-bill';
 	const PREFIX = 'jimsoft-qr-bill_';
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -173,6 +174,10 @@ class Jimsoft_Qr_Bill {
 
 
 		add_action( 'template_redirect', function () {
+
+			if(!current_user_can('manage_woocommerce')) return;
+
+
 			if ( isset( $_REQUEST['jimsoft_order_id'] ) ) {
 				$id = $_REQUEST['jimsoft_order_id'];
 

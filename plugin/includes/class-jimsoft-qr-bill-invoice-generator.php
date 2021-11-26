@@ -9,6 +9,8 @@ use Sprain\SwissQrBill\DataGroup\Element\PaymentReference;
 use Sprain\SwissQrBill\DataGroup\Element\StructuredAddress;
 use Sprain\SwissQrBill\QrBill;
 use Sprain\SwissQrBill\PaymentPart\Output\TcPdfOutput\TcPdfOutput;
+use Sprain\SwissQrBill\Reference\QrPaymentReferenceGenerator;
+use Symfony\Component\Validator\ConstraintViolation;
 
 /**
  * The file that defines the generator class
@@ -27,7 +29,7 @@ class Jimsoft_Qr_Bill_Invoice_Generator {
 	private $order;
 
 
-	public function __construct($order_id) {
+	public function __construct( $order_id ) {
 
 		//$this->generate();
 
@@ -43,32 +45,34 @@ class Jimsoft_Qr_Bill_Invoice_Generator {
 
 
 	private function get_option( $key ) {
-		$value = get_option( Jimsoft_Qr_Bill::PREFIX . $key, true );
-		if(is_string($value)) {
-			$value = str_replace('[order_number]', $this->order->get_order_number(), $value);
+		$value = get_option( Jimsoft_Qr_Bill::PREFIX . $key );
+		if ( is_string( $value ) ) {
+			$value = str_replace( '[order_number]', $this->order->get_order_number(), $value );
 		}
+
 		return $value;
 	}
 
 
 	/**
-	 * @param $order_id
+	 * Generate the a QR Bill as a PDF
 	 *
 	 */
-	public function generate( ) {
+	public function generate() {
 
 		$order_id = $this->order->get_id();
-		$order = $this->order;
+		$order    = $this->order;
 
-		$normal_iban         = $this->get_option( 'normal_iban' );
-		$qr_iban             = $this->get_option( 'qr_iban' );
-		$creditor_company    = $this->get_option( 'creditor_company' );
-		$creditor_salutation = $this->get_option( 'creditor_salutation' );
-		$creditor_first_name = $this->get_option( 'creditor_first_name' );
-		$creditor_last_name  = $this->get_option( 'creditor_last_name' );
-		$creditor_street     = $this->get_option( 'creditor_street' );
-		$creditor_zip        = $this->get_option( 'creditor_zip' );
-		$creditor_city       = $this->get_option( 'creditor_city' );
+		$normal_iban                    = $this->get_option( 'normal_iban' );
+		$qr_iban                        = $this->get_option( 'qr_iban' );
+		$customer_identification_number = $this->get_option( 'customer_identification_number' );
+		$creditor_company               = $this->get_option( 'creditor_company' );
+		$creditor_salutation            = $this->get_option( 'creditor_salutation' );
+		$creditor_first_name            = $this->get_option( 'creditor_first_name' );
+		$creditor_last_name             = $this->get_option( 'creditor_last_name' );
+		$creditor_street                = $this->get_option( 'creditor_street' );
+		$creditor_zip                   = $this->get_option( 'creditor_zip' );
+		$creditor_city                  = $this->get_option( 'creditor_city' );
 
 		$qrBill = QrBill::create();
 
@@ -86,20 +90,48 @@ class Jimsoft_Qr_Bill_Invoice_Generator {
 				'CH'
 			)
 		);
-		$qrBill->setPaymentReference(
-			PaymentReference::create(
-				PaymentReference::TYPE_NON
-			)
-		);
-		$qrBill->setCreditorInformation(
-			CreditorInformation::create( $normal_iban )
-		);
 
-		$qrBill->setAdditionalInformation(
-			AdditionalInformation::create(
-				'Bestellung #' . $this->order->get_order_number()
-			)
-		);
+		if ( $qr_iban ) {
+
+		    if(!$customer_identification_number) {
+		        $customer_identification_number = null;
+            }
+
+			$referenceNumber = QrPaymentReferenceGenerator::generate(
+				$customer_identification_number,  // You receive this number from your bank (BESR-ID). Unless your bank is PostFinance, in that case use NULL.
+				$order->get_order_number()
+			);
+
+			$qrBill->setPaymentReference(
+				PaymentReference::create(
+					PaymentReference::TYPE_QR,
+					$referenceNumber
+				)
+			);
+			$qrBill->setCreditorInformation(
+				CreditorInformation::create( $qr_iban )
+			);
+		} else {
+			$qrBill->setPaymentReference(
+				PaymentReference::create(
+					PaymentReference::TYPE_NON
+				)
+			);
+			$qrBill->setCreditorInformation(
+				CreditorInformation::create( $normal_iban )
+			);
+		}
+
+
+		if($value = $this->get_option('invoice_additional_information')) {
+
+			$qrBill->setAdditionalInformation(
+				AdditionalInformation::create(
+					$value
+				)
+			);
+        }
+
 
 		$qrBill->setUltimateDebtor(
 			StructuredAddress::createWithStreet(
@@ -115,6 +147,27 @@ class Jimsoft_Qr_Bill_Invoice_Generator {
 		$qrBill->setPaymentAmountInformation(
 			PaymentAmountInformation::create( 'CHF', $this->order->get_total() )
 		);
+		$violations = $qrBill->getViolations();
+
+		if ( $violations->count() ) {
+			?>
+            <h3>Error List</h3>
+            <table>
+
+				<?php foreach ( $violations as $violation ): ?>
+					<?php
+					/** @var ConstraintViolation $violation */
+					?>
+                    <tr>
+                        <th><?= $violation->getPropertyPath() ?></th>
+                        <td><?= $violation->getMessage() ?></td>
+                    </tr>
+				<?php endforeach; ?>
+                </tbody>
+            </table>
+			<?php
+			exit;
+		}
 
 
 		$tcPdf = new TCPDF( 'P', 'mm', 'A4', true, 'UTF-8' );
@@ -123,9 +176,9 @@ class Jimsoft_Qr_Bill_Invoice_Generator {
 		$tcPdf->AddPage();
 
 
-		$tcPdf->SetFontSize(10);
-		if(is_numeric($this->get_option('pdf_font_size'))) {
-			$tcPdf->SetFontSize($this->get_option('pdf_font_size'));
+		$tcPdf->SetFontSize( 10 );
+		if ( is_numeric( $this->get_option( 'pdf_font_size' ) ) ) {
+			$tcPdf->SetFontSize( $this->get_option( 'pdf_font_size' ) );
 		}
 
 
@@ -175,6 +228,12 @@ class Jimsoft_Qr_Bill_Invoice_Generator {
 		exit;
 	}
 
+	/**
+	 * Print debitor address on pdf
+	 *
+	 * @param $tcPdf
+	 * @param $order
+	 */
 	private function printAddress( $tcPdf, $order ) {
 
 		$address = $order->get_billing_first_name() . ' ' . $order->get_billing_last_name() . PHP_EOL;
@@ -199,6 +258,8 @@ class Jimsoft_Qr_Bill_Invoice_Generator {
 	}
 
 	/**
+	 * Print logo on PDF
+	 *
 	 * @param TCPDF $tcPdf
 	 * @param $order
 	 */
@@ -209,6 +270,7 @@ class Jimsoft_Qr_Bill_Invoice_Generator {
 		$w = 0;
 		$h = 0;
 
+		// get width and height from options
 		if ( is_numeric( $this->get_option( 'pdf_logo_w' ) ) ) {
 			$w = $this->get_option( 'pdf_logo_w' );
 		}
@@ -219,10 +281,11 @@ class Jimsoft_Qr_Bill_Invoice_Generator {
 		$x = '';
 		$y = '';
 
-		if ( is_numeric($this->get_option( 'pdf_logo_x' )) ) {
+		// get position from options
+		if ( is_numeric( $this->get_option( 'pdf_logo_x' ) ) ) {
 			$x = $this->get_option( 'pdf_logo_x' );
 		}
-		if ( is_numeric($this->get_option( 'pdf_logo_y' )) ) {
+		if ( is_numeric( $this->get_option( 'pdf_logo_y' ) ) ) {
 			$y = $this->get_option( 'pdf_logo_y' );
 		}
 		$tcPdf->Image( $url, $x, $y, $w, $h );
@@ -230,18 +293,20 @@ class Jimsoft_Qr_Bill_Invoice_Generator {
 	}
 
 	/**
+	 * Print Creditor textarea on PDF
+	 *
 	 * @param TCPDF $tcPdf
 	 * @param $order
 	 */
-	private function printCreditor($tcPdf, $order) {
+	private function printCreditor( $tcPdf, $order ) {
 
 		$x = '';
 		$y = '';
 
-		if ( is_numeric($this->get_option( 'pdf_creditor_x' )) ) {
+		if ( is_numeric( $this->get_option( 'pdf_creditor_x' ) ) ) {
 			$x = $this->get_option( 'pdf_creditor_x' );
 		}
-		if ( is_numeric($this->get_option( 'pdf_creditor_y' )) ) {
+		if ( is_numeric( $this->get_option( 'pdf_creditor_y' ) ) ) {
 			$y = $this->get_option( 'pdf_creditor_y' );
 		}
 
@@ -250,28 +315,30 @@ class Jimsoft_Qr_Bill_Invoice_Generator {
 	}
 
 	/**
+	 * Print date and location on PDF
+	 *
 	 * @param TCPDF $tcPdf
 	 * @param $order
 	 */
-	private function printDate($tcPdf, $order) {
+	private function printDate( $tcPdf, $order ) {
 
 		$x = '';
 		$y = '';
 
-		if ( is_numeric($this->get_option( 'pdf_date_x' )) ) {
+		if ( is_numeric( $this->get_option( 'pdf_date_x' ) ) ) {
 			$x = $this->get_option( 'pdf_date_x' );
 		}
-		if ( is_numeric($this->get_option( 'pdf_date_y' )) ) {
+		if ( is_numeric( $this->get_option( 'pdf_date_y' ) ) ) {
 			$y = $this->get_option( 'pdf_date_y' );
 		}
 
 
 		$string = '';
 
-		if($this->get_option('pdf_date_city')) {
-			$string .= $this->get_option('pdf_date_city') . ', ';
+		if ( $this->get_option( 'pdf_date_city' ) ) {
+			$string .= $this->get_option( 'pdf_date_city' ) . ', ';
 		}
-		$string .= date($this->get_option('pdf_date_format'));
+		$string .= date( $this->get_option( 'pdf_date_format' ) );
 
 		$tcPdf->MultiCell( 0, 0, $string, 0, 'L', false, 1, $x, $y );
 
