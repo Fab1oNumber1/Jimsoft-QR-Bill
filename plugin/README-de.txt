@@ -1,10 +1,11 @@
-=== Plugin Name ===
+=== JimSoft QR Invoice for WooCommerce (Swiss) ===
 Contributors: (this should be a list of wordpress.org userid's)
 Donate link: https://jimsoft.ch
-Tags: comments, spam
+Tags: woocommerce, invoice, qr
 Requires at least: 4.7
 Tested up to: 5.8.2
 Stable tag: 4.7
+Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,71 +13,32 @@ Erstelle schweizer QR-Rechnung im WooCommerce. Über diverse Einstellungsmöglic
 
 == Description ==
 
-Features
-* Sehr einfaches einrichten
-* Viele Einstellungsmöglichkeiten
-* Rechnungen sind direkt Druckbereit
+Du willst die neuen Zahlscheine mit QR-Code erstellen?
+Mit JimSoft QR Invoice kannst du das im Handumdrehen erledigen.
+Wir bieten dir eine einfache, benutzerfreundliche WooCommerce-Erweiterung, mit dem du die neuen Einzahlungsscheine schnell und unkompliziert erstellen kannst.
 
+= Features =
+* Sehr einfaches einrichten: Du musst nur deine (QR-)IBAN hinterlegen und direkt loslegen.
+* Keine QR-IBAN? Du kannst auch mit einer normalen IBAN ohne ESR arbeiten, die Rechnungen sind trotzdem Zukunftssicher für die kommenden Änderungen in 2022
+* Viele Einstellungsmöglichkeiten: Logo & Farbschema, wie auch Positionierungen der einzelnen Elemente kannst du selber anpassen. Zusätzlich gibt es noch freie Textfelder, mit welchem du die Rechnungen ergänzen kannst.
+* Bestellpositionen & Total: Optional kannst du die Ausgabe von diversen weiteren Informationen auf der Rechnung ausgeben, dazu gehören unter anderem Bestellpositionen, aktuelles Datum, Informationen zum Creditor (z.B. MWST-Nummer) etc.
+* Rechnungen sind direkt Druckbereit: Die Rechnungen sind nach Eingabe der IBAN bereits so konfiguriert, dass diese direkt Druckbereit sind.
+* Kompatibel für Fensterbriefe: Wenn du die Rechnungen per Post versendest oder dem Paket beilegst, kannst du die Adresse des Kunden frei positionieren, so dass diese direkt in das Adressenfenster passt.
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= Bis wann können die alten Einzahlungsscheine (rot und orange) noch genutzt werden? =
 
-An answer to that question.
+Die alten Einzahlungsscheine können nur noch bis am 30.9.2022 verwendet werden.
 
+= Was ist die QR-Inban? =
 
-== Screenshots ==
+Dies ist eine eindeutige Bankreferenznummer für Ihr Konto. Diese wird von Ihrer Hausbank für Ihre Bankverbindung vergeben, damit eingehende Zahlungen automatisch verarbeitet werden können.
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+= Kann die QR-Rechnung auch für Einzahlungen am Postschalter verwendet werden? =
 
-== Changelog ==
+Ja, wie mit roten und orangen Einzahlungsscheinen, kann auch die QR-Rechnung (Zahlteil mit Empfangsschein) am Postschalter für die Bezahlung Zahlung verwendet werden. Ausserden steht weiterhin ein Empfangsschein für die Bestätigung von Einzahlungen zur Verfügung.
 
-= 1.0 =
-* A change since the previous version.
-* Another change.
+= Können im PDF zusätzliche Informationen wie z.B. MWST-Nummer, alternative Bezahlmethoden etc. eingefügt werden?
 
-= 0.5 =
-* List versions from most recent at top to oldest at bottom.
-
-== Upgrade Notice ==
-
-= 1.0 =
-Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
-
-= 0.5 =
-This version fixes a security related bug.  Upgrade immediately.
-
-== Arbitrary section ==
-
-You may provide arbitrary sections, in the same format as the ones above.  This may be of use for extremely complicated
-plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
-"installation."  Arbitrary sections will be shown below the built-in sections outlined above.
-
-== A brief Markdown Example ==
-
-Ordered list:
-
-1. Some feature
-1. Another feature
-1. Something else about the plugin
-
-Unordered list:
-
-* something
-* something else
-* third thing
-
-Here's a link to [WordPress](http://wordpress.org/ "Your favorite software") and one to [Markdown's Syntax Documentation][markdown syntax].
-Titles are optional, naturally.
-
-[markdown syntax]: http://daringfireball.net/projects/markdown/syntax
-            "Markdown is what the parser uses to process much of the readme file"
-
-Markdown uses email style notation for blockquotes and I've been told:
-> Asterisks for *emphasis*. Double it up  for **strong**.
-
-`<?php code(); // goes in backticks ?>`
+Ja, durch freie Textfelder können zusätzliche Informationen einfach im PDF direkt in den Einstellungen eingefügt werden.
