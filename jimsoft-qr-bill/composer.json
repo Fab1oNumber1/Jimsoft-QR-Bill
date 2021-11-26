@@ -1,7 +1,6 @@
 {
     "require": {
-        "sprain/swiss-qr-bill": "^3.2",
-        "tecnickcom/tcpdf": "^6.4"
+        "sprain/swiss-qr-bill": "^3.2"
     },
     "config": {
         "platform": {
@@ -9,3 +8,4 @@
         }
     }
 }
+

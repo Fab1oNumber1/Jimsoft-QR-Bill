@@ -1,4 +1,4 @@
-=== JimSoft Swiss QR Invoice ===
+=== Jim Soft Swiss QR Invoice ===
 Contributors: jimsoft
 Donate link: https://jimsoft.ch
 Tags: woocommerce, invoice, qr

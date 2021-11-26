@@ -1,6 +1,5 @@
 <?php
 
-use Mpdf\Mpdf;
 use Sprain\SwissQrBill\DataGroup\Element\AdditionalInformation;
 use Sprain\SwissQrBill\DataGroup\Element\CombinedAddress;
 use Sprain\SwissQrBill\DataGroup\Element\CreditorInformation;
@@ -75,6 +74,7 @@ class Jimsoft_Qr_Bill_Invoice_Generator {
 		$creditor_city                  = $this->get_option( 'creditor_city' );
 
 		$qrBill = QrBill::create();
+
 
 		$creditor_name = $creditor_company;
 

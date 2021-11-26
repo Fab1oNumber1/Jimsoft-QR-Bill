@@ -5,7 +5,7 @@
       <paths name="plugin">
         <serverdata>
           <mappings>
-            <mapping deploy="/wp-content/plugins/jimsoft-qr-bill" local="$PROJECT_DIR$/plugin" web="/" />
+            <mapping deploy="/wp-content/plugins/jimsoft-qr-bill" local="$PROJECT_DIR$/jimsoft-qr-bill" web="/" />
           </mappings>
         </serverdata>
       </paths>

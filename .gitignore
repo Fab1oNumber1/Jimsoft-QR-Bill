@@ -1,2 +1,3 @@
 docker-compose-wordpress/wp
 */vendor
+composer.phar
