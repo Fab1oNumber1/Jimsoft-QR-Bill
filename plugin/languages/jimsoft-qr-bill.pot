@@ -1,4 +1,4 @@
-# Copyright (C) 2021 JimSoft
+# Copyright (C) 2021 Jim Soft
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
