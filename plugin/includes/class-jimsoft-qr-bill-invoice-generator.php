@@ -196,7 +196,7 @@ class Jimsoft_Qr_Bill_Invoice_Generator {
 		}
 
 
-		$pdf_color_primary    = '#333';
+		$pdf_color_primary    = '#333333';
 		$pdf_color_table_even = '#EFEFEF';
 		$pdf_color_table_odd  = '#FFFFFF';
 
