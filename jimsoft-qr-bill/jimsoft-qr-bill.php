@@ -25,7 +25,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/includes/swiss-qr-bill/vendor/autoload.php';
 require __DIR__ . '/includes/tcpdf_min/tcpdf.php';
 
 

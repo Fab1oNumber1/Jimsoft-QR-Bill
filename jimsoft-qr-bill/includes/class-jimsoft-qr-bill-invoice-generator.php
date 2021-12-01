@@ -9,7 +9,6 @@ use Sprain\SwissQrBill\DataGroup\Element\StructuredAddress;
 use Sprain\SwissQrBill\QrBill;
 use Sprain\SwissQrBill\PaymentPart\Output\TcPdfOutput\TcPdfOutput;
 use Sprain\SwissQrBill\Reference\QrPaymentReferenceGenerator;
-use Symfony\Component\Validator\ConstraintViolation;
 
 /**
  * The file that defines the generator class
@@ -93,9 +92,9 @@ class Jimsoft_Qr_Bill_Invoice_Generator {
 
 		if ( $qr_iban ) {
 
-		    if(!$customer_identification_number) {
-		        $customer_identification_number = null;
-            }
+			if ( ! $customer_identification_number ) {
+				$customer_identification_number = null;
+			}
 
 			$referenceNumber = QrPaymentReferenceGenerator::generate(
 				$customer_identification_number,  // You receive this number from your bank (BESR-ID). Unless your bank is PostFinance, in that case use NULL.
@@ -123,14 +122,14 @@ class Jimsoft_Qr_Bill_Invoice_Generator {
 		}
 
 
-		if($value = $this->get_option('invoice_additional_information')) {
+		if ( $value = $this->get_option( 'invoice_additional_information' ) ) {
 
 			$qrBill->setAdditionalInformation(
 				AdditionalInformation::create(
 					$value
 				)
 			);
-        }
+		}
 
 
 		$qrBill->setUltimateDebtor(
@@ -147,6 +146,7 @@ class Jimsoft_Qr_Bill_Invoice_Generator {
 		$qrBill->setPaymentAmountInformation(
 			PaymentAmountInformation::create( 'CHF', $this->order->get_total() )
 		);
+		/*
 		$violations = $qrBill->getViolations();
 
 		if ( $violations->count() ) {
@@ -156,7 +156,6 @@ class Jimsoft_Qr_Bill_Invoice_Generator {
 
 				<?php foreach ( $violations as $violation ): ?>
 					<?php
-					/** @var ConstraintViolation $violation */
 					?>
                     <tr>
                         <th><?= $violation->getPropertyPath() ?></th>
@@ -168,7 +167,7 @@ class Jimsoft_Qr_Bill_Invoice_Generator {
 			<?php
 			exit;
 		}
-
+*/
 
 		$tcPdf = new TCPDF( 'P', 'mm', 'A4', true, 'UTF-8' );
 		$tcPdf->setPrintHeader( false );
@@ -220,8 +219,8 @@ class Jimsoft_Qr_Bill_Invoice_Generator {
 
 		$locale = 'en';
 
-		if(get_bloginfo('language')) {
-		    $locale = explode('-', get_bloginfo('language'))[0];
+		if ( get_bloginfo( 'language' ) ) {
+			$locale = explode( '-', get_bloginfo( 'language' ) )[0];
 		}
 
 		$output = new TcPdfOutput( $qrBill, $locale, $tcPdf );

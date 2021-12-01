@@ -14,8 +14,8 @@ msgstr ""
 "X-Generator: WP-CLI 2.5.0\n"
 
 #. Plugin Name of the plugin
-msgid "JimSoft QR Bill"
-msgstr ""
+msgid "JimSoft QR Invoice"
+msgstr "JimSoft QR Rechnung"
 
 #. Plugin URI of the plugin
 #. Author URI of the plugin
@@ -155,8 +155,8 @@ msgid "Logo URL"
 msgstr "Logo URL"
 
 #: admin/partials/jimsoft-qr-bill-settings-main.php:146
-msgid "Logo position X"
-msgstr "Logo Position X"
+msgid "Logo position (horizontal)"
+msgstr "Logo Position (Horizontal)"
 
 #: admin/partials/jimsoft-qr-bill-settings-main.php:148
 #: admin/partials/jimsoft-qr-bill-settings-main.php:154
@@ -172,8 +172,8 @@ msgid "in millimeters"
 msgstr "Angabe in Millimeter"
 
 #: admin/partials/jimsoft-qr-bill-settings-main.php:152
-msgid "Logo position Y"
-msgstr "Logo Position Y"
+msgid "Logo position (vertical)"
+msgstr "Logo Position (Vertikal)"
 
 #: admin/partials/jimsoft-qr-bill-settings-main.php:158
 msgid "Logo width"
@@ -188,24 +188,24 @@ msgid "Show debitor address"
 msgstr "Zeige Debitor Adresse"
 
 #: admin/partials/jimsoft-qr-bill-settings-main.php:177
-msgid "Debitor address position x"
-msgstr "Debitor Adresse Position X"
+msgid "Debitor address position (horizontal)"
+msgstr "Debitor Adresse Position (Horizontal)"
 
 #: admin/partials/jimsoft-qr-bill-settings-main.php:183
-msgid "Debitor address position y"
-msgstr "Debitor Adresse Position Y"
+msgid "Debitor address position (vertical)"
+msgstr "Debitor Adresse Position (Vertikal)"
 
 #: admin/partials/jimsoft-qr-bill-settings-main.php:190
 msgid "Creditor textarea"
 msgstr "Creditor Textfeld"
 
 #: admin/partials/jimsoft-qr-bill-settings-main.php:195
-msgid "Creditor textarea position X"
-msgstr "Creditor Textfeld Position X"
+msgid "Creditor textarea position (horizontal)"
+msgstr "Creditor Textfeld Position (Horizontal)"
 
 #: admin/partials/jimsoft-qr-bill-settings-main.php:201
-msgid "Creditor textarea position Y"
-msgstr "Creditor Textfeld Position Y"
+msgid "Creditor textarea position (vertical)"
+msgstr "Creditor Textfeld Position (Vertikal)"
 
 #: admin/partials/jimsoft-qr-bill-settings-main.php:207
 msgid "Show date/location"
@@ -224,12 +224,12 @@ msgid "Format for date() function e.g. \"d.m.Y\""
 msgstr "Formatierung für date()-Funktion"
 
 #: admin/partials/jimsoft-qr-bill-settings-main.php:223
-msgid "Date position X"
-msgstr "Datum Position X"
+msgid "Date position (horizontal)"
+msgstr "Datum Position (Horizontal)"
 
 #: admin/partials/jimsoft-qr-bill-settings-main.php:229
-msgid "Date position Y"
-msgstr "Datum Position Y"
+msgid "Date position (vertical)"
+msgstr "Datum Position (Vertikal)"
 
 #: includes/class-jimsoft-qr-bill-activator.php:33
 #: includes/class-jimsoft-qr-bill-activator.php:39

@@ -143,13 +143,13 @@ $settings = [
 	],
 	[
 		'id'   => $prefix . 'pdf_logo_x',
-		'name' => __( 'Logo position X', Jimsoft_Qr_Bill::SLUG ),
+		'name' => __( 'Logo position (horizontal)', Jimsoft_Qr_Bill::SLUG ),
 		'type' => 'number',
 		'desc_tip'    => __('in millimeters', Jimsoft_Qr_Bill::SLUG),
 	],
 	[
 		'id'   => $prefix . 'pdf_logo_y',
-		'name' => __( 'Logo position Y', Jimsoft_Qr_Bill::SLUG ),
+		'name' => __( 'Logo position (vertical)', Jimsoft_Qr_Bill::SLUG ),
 		'type' => 'number',
 		'desc_tip'    => __('in millimeters', Jimsoft_Qr_Bill::SLUG),
 	],
@@ -174,13 +174,13 @@ $settings = [
 	],
 	[
 		'id'          => $prefix . 'pdf_address_x',
-		'name'        => __( 'Debitor address position x', Jimsoft_Qr_Bill::SLUG ),
+		'name'        => __( 'Debitor address position (horizontal)', Jimsoft_Qr_Bill::SLUG ),
 		'type'        => 'number',
 		'desc_tip'    => __('in millimeters', Jimsoft_Qr_Bill::SLUG),
 	],
 	[
 		'id'          => $prefix . 'pdf_address_y',
-		'name'        => __( 'Debitor address position y', Jimsoft_Qr_Bill::SLUG ),
+		'name'        => __( 'Debitor address position (vertical)', Jimsoft_Qr_Bill::SLUG ),
 		'type'        => 'number',
 		'desc_tip'    => __('in millimeters', Jimsoft_Qr_Bill::SLUG),
 	],
@@ -192,13 +192,13 @@ $settings = [
 	],
 	[
 		'id'          => $prefix . 'pdf_creditor_x',
-		'name'        => __( 'Creditor textarea position X', Jimsoft_Qr_Bill::SLUG ),
+		'name'        => __( 'Creditor textarea position (horizontal)', Jimsoft_Qr_Bill::SLUG ),
 		'type'        => 'number',
 		'desc_tip'    => __('in millimeters', Jimsoft_Qr_Bill::SLUG),
 	],
 	[
 		'id'          => $prefix . 'pdf_creditor_y',
-		'name'        => __( 'Creditor textarea position Y', Jimsoft_Qr_Bill::SLUG ),
+		'name'        => __( 'Creditor textarea position (vertical)', Jimsoft_Qr_Bill::SLUG ),
 		'type'        => 'number',
 		'desc_tip'    => __('in millimeters', Jimsoft_Qr_Bill::SLUG),
 	],
@@ -220,13 +220,13 @@ $settings = [
 	],
 	[
 		'id'   => $prefix . 'pdf_date_x',
-		'name' => __( 'Date position X', Jimsoft_Qr_Bill::SLUG ),
+		'name' => __( 'Date position (horizontal)', Jimsoft_Qr_Bill::SLUG ),
 		'type' => 'number',
 		'desc_tip'    => __('in millimeters', Jimsoft_Qr_Bill::SLUG),
 	],
 	[
 		'id'   => $prefix . 'pdf_date_y',
-		'name' => __( 'Date position Y', Jimsoft_Qr_Bill::SLUG ),
+		'name' => __( 'Date position (vertical)', Jimsoft_Qr_Bill::SLUG ),
 		'type' => 'number',
 		'desc_tip'    => __('in millimeters', Jimsoft_Qr_Bill::SLUG),
 	],
