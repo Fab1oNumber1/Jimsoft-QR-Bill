@@ -179,6 +179,7 @@ class Jimsoft_Qr_Bill {
 
 
 			if ( isset( $_REQUEST['jimsoft_order_id'] ) ) {
+				nocache_headers();
 				$id = $_REQUEST['jimsoft_order_id'];
 
 				$generator = new Jimsoft_Qr_Bill_Invoice_Generator($id);
