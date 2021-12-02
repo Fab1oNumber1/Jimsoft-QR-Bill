@@ -128,7 +128,7 @@ class Jimsoft_Qr_Bill_Admin {
 	}
 
 	public function shop_order_columns_add_download_invoice( $columns ) {
-		$columns[ Jimsoft_Qr_Bill::PREFIX . 'download' ] = __( 'QR Invoice', 'woocommerce' );
+		$columns[ Jimsoft_Qr_Bill::PREFIX . 'download' ] = __( 'QR Invoice', Jimsoft_Qr_Bill::SLUG );
 
 		return $columns;
 	}
