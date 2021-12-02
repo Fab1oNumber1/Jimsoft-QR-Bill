@@ -50,26 +50,26 @@ if ( $show_downloads ) {
 
 
 <?php if ( $value = $this->get_option( 'pdf_order_details_title' ) ): ?>
-    <h2 class="woocommerce-order-details__title"><?= $value; ?></h2>
+    <h2 class="woocommerce-order-details__title"><?php echo wp_kses_post($value); ?></h2>
 <?php endif; ?>
 
 
 <?php if ( $value = $this->get_option( 'pdf_order_details_text' ) ): ?>
-	<?= nl2br($value); ?>
+	<?php echo wp_kses_post(nl2br($value)); ?>
     <br/>
     <br/>
 <?php endif; ?>
 
-    <table class="woocommerce-table woocommerce-table--order-details shop_table order_details" cellpadding="<?= $this->get_option('pdf_table_cellpadding'); ?>">
+    <table class="woocommerce-table woocommerce-table--order-details shop_table order_details" cellpadding="<?php echo $this->get_option('pdf_table_cellpadding'); ?>">
 
         <thead>
         <tr>
-            <th class="woocommerce-table__product-name product-name" width="<?= $td_widths[0] ?>"
-                style="color: white; background-color: <?= $pdf_color_primary ?>"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
-            <th class="woocommerce-table__product-name product-name" width="<?= $td_widths[1] ?>" align="right"
-                style="color: white; background-color: <?= $pdf_color_primary ?>"><?php esc_html_e( 'Quantity', 'woocommerce' ); ?></th>
-            <th class="woocommerce-table__product-table product-total" width="<?= $td_widths[2] ?>" align="right"
-                style="color: white; background-color: <?= $pdf_color_primary ?>"><?php esc_html_e( 'Total', 'woocommerce' ); ?></th>
+            <th class="woocommerce-table__product-name product-name" width="<?php echo esc_attr($td_widths[0]) ?>"
+                style="color: white; background-color: <?php echo $pdf_color_primary ?>"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
+            <th class="woocommerce-table__product-name product-name" width="<?php echo esc_attr($td_widths[1]) ?>" align="right"
+                style="color: white; background-color: <?php echo $pdf_color_primary ?>"><?php esc_html_e( 'Quantity', 'woocommerce' ); ?></th>
+            <th class="woocommerce-table__product-table product-total" width="<?php echo esc_attr($td_widths[2]) ?>" align="right"
+                style="color: white; background-color: <?php echo $pdf_color_primary ?>"><?php esc_html_e( 'Total', 'woocommerce' ); ?></th>
         </tr>
         </thead>
 
@@ -98,9 +98,9 @@ if ( $show_downloads ) {
 			}
 			?>
             <tr>
-                <th scope="row" width="<?= $td_widths[0] ?>"><?php echo esc_html( $total['label'] ); ?></th>
-                <th width="<?= $td_widths[1] ?>"></th>
-                <td width="<?= $td_widths[2] ?>"
+                <th scope="row" width="<?php echo esc_attr($td_widths[0]); ?>"><?php echo esc_html( $total['label'] ); ?></th>
+                <th width="<?php echo esc_attr($td_widths[1]); ?>"></th>
+                <td width="<?php echo esc_attr($td_widths[2]); ?>"
                     align="right"><?php echo ( 'payment_method' === $key ) ? esc_html( $total['value'] ) : wp_kses_post( $total['value'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></td>
             </tr>
 			<?php
@@ -109,9 +109,9 @@ if ( $show_downloads ) {
 
 		<?php if ( false && $order->get_customer_note() ) : ?>
             <tr>
-                <th width="<?= $td_widths[0] ?>"><?php esc_html_e( 'Note:', 'woocommerce' ); ?></th>
-                <th width="<?= $td_widths[1] ?>"></th>
-                <td width="<?= $td_widths[2] ?>"
+                <th width="<?php echo esc_attr($td_widths[0]); ?>"><?php esc_html_e( 'Note:', 'woocommerce' ); ?></th>
+                <th width="<?php echo esc_attr($td_widths[1]); ?>"></th>
+                <td width="<?php echo esc_attr($td_widths[2]); ?>"
                     align="right"><?php echo wp_kses_post( nl2br( wptexturize( $order->get_customer_note() ) ) ); ?></td>
             </tr>
 		<?php endif; ?>

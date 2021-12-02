@@ -135,13 +135,14 @@ class Jimsoft_Qr_Bill_Admin {
 
 	public function manage_shop_order_posts_custom_column_download_invoice_content( $column, $post_id ) {
 		if ( Jimsoft_Qr_Bill::PREFIX . 'download' === $column ) {
-			$order = wc_get_order( $post_id ); // Get the WC_Order instance Object
+			//$order = wc_get_order( $post_id ); // Get the WC_Order instance Object
 
 			$slug = Jimsoft_Qr_Bill::PREFIX . 'download';
 			$url  = get_site_url() . '?jimsoft_order_id=' . $post_id; // The order Id is required in the URL
 
+			$css_classes = "button wc-action-button wc-action-button-" . $slug . ' ' . $slug;
 			// Output the button
-			echo '<p><a class="button wc-action-button wc-action-button' . $slug . ' ' . $slug . '" href="' . $url . '" aria-label="' . $slug . '" target="_blank">Download</a></p>';
+			echo '<p><a class="'.esc_attr($css_classes).'" href="' . esc_url($url) . '" aria-label="' . esc_attr($slug) . '" target="_blank">Download</a></p>';
 		}
 	}
 }
