@@ -8,10 +8,9 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Jim Soft Swiss QR Invoice
- * Plugin URI:        https://jimsoft.ch
  * Description:       With this plugin you can generate a swiss QR invoice for WooCommerce orders.
  * Version:           1.0.0
- * Author:            JimSoft
+ * Author:            Jim Soft
  * Author URI:        https://jimsoft.ch
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
