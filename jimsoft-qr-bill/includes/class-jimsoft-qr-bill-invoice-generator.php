@@ -158,8 +158,8 @@ class Jimsoft_Qr_Bill_Invoice_Generator {
 					<?php
 					?>
                     <tr>
-                        <th><?= $violation->getPropertyPath() ?></th>
-                        <td><?= $violation->getMessage() ?></td>
+                        <th><?php echo wp_kses_post($violation->getPropertyPath()); ?></th>
+                        <td><?php echo wp_kses_post($violation->getMessage()); ?></td>
                     </tr>
 				<?php endforeach; ?>
                 </tbody>
@@ -167,7 +167,7 @@ class Jimsoft_Qr_Bill_Invoice_Generator {
 			<?php
 			exit;
 		}
-*/
+		*/
 
 		$tcPdf = new TCPDF( 'P', 'mm', 'A4', true, 'UTF-8' );
 		$tcPdf->setPrintHeader( false );

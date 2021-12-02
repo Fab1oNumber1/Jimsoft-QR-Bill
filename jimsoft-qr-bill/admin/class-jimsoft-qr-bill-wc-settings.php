@@ -33,7 +33,7 @@ if ( ! class_exists( 'Jimsoft_Qr_Bill_WC_Settings' ) ) {
 
 
             $this->id    = Jimsoft_Qr_Bill::SLUG;
-            $this->label = __( 'QR Invoice', Jimsoft_Qr_Bill::PREFIX );
+            $this->label = __( 'QR Invoice', Jimsoft_Qr_Bill::SLUG );
 
             // Define all hooks instead of inheriting from parent
             add_filter( 'woocommerce_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
